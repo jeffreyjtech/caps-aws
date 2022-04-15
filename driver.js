@@ -9,27 +9,33 @@ const app = Consumer.create({
   handleMessage: confirmPickup,
 });
 
-const producer = Producer.create({
-  queueUrl: 'https://sqs.us-west-2.amazonaws.com/688409722565/delivered.fifo',
-  region: 'us-west-2',
-});
-
 async function confirmPickup(message) {
+  console.log('Picked up package');
   setTimeout(async ()=> {
     try {
-      let body = JSON.parse(message.Body);
-      let parsedOrder = JSON.stringify();
+      console.log('Package delivered');
+      const body = JSON.parse(message.Body);
+      const order = JSON.parse(body.Message);
+
+      const producer = Producer.create({
+        queueUrl: order.queueUrl,
+        region: 'us-west-2',
+      });
+
+      const stringifiedMessage = JSON.stringify({
+        ...order,
+        deliveredMessage: `${order.orderId} has been delivered`,
+        deliveredBool: true,
+      });
   
-      // const payload = {
-      //   id: crypto.randomUUID(),
-      //   body: messageString,
-      //   groupId: 'sqs-consumer',
-      //   deduplicationId: crypto.createHash('sha256').update(messageString, 'utf8').digest('hex'),
-      // };
+      const payload = {
+        id: crypto.randomUUID(),
+        body: stringifiedMessage,
+      };
     
-      // let response = await producer.send(payload);
+      let response = await producer.send(payload);
     
-      // console.log(response);
+      console.log('Payload sent to SQS:\n ', response);
     } catch (error) {
       console.error(error);
     }
