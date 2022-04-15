@@ -21,7 +21,7 @@ const payload = {
   Message: stringifiedOrder,
   TopicArn: topic,
   MessageDeduplicationId: crypto.createHash('sha256').update(stringifiedOrder, 'utf8').digest('hex'),
-  MessageGroupId: 'vendors',
+  MessageGroupId: 'vendor1',
 };
 
 let response = sns.publish(payload).promise()
