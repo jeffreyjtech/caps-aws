@@ -15,11 +15,9 @@ const stringifiedOrder = JSON.stringify({
 
 const sns = new AWS.SNS();
 
-const topic = 'arn:aws:sns:us-west-2:688409722565:pickup.fifo';
-
 const payload = {
   Message: stringifiedOrder,
-  TopicArn: topic,
+  TopicArn: 'arn:aws:sns:us-west-2:688409722565:pickup.fifo',
   MessageDeduplicationId: crypto.createHash('sha256').update(stringifiedOrder, 'utf8').digest('hex'),
   MessageGroupId: 'vendor1',
 };
