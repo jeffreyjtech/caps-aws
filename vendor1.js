@@ -23,11 +23,18 @@ const payload = {
   MessageGroupId: 'vendor1',
 };
 
-sns.publish(payload).promise()
-  .then((response) => {
-    console.log('Payload sent to SNS:\n ', response);
-  })
-  .catch(console.error);
+function publishPickup() {
+  sns.publish(payload).promise()
+    .then((response) => {
+      console.log('Payload sent to SNS');
+    })
+    .catch(console.error);
+}
+
+publishPickup();
+
+setInterval(publishPickup, 5000);
+
 
 
 const app = Consumer.create({
