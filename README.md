@@ -5,3 +5,7 @@ An AWS-powered parcel delivery service that allows for vendors, such as flower s
 ## UML Diagram
 
 ![My UML Diagram depicting the SQSs, SNSs, and non-AWS code for interacting with them](./assets/lab-19-uml.jpg)
+
+## Console Logs
+
+![Console logs showing successful pickup, delivery, and receipt of delivery by vendor](./assets/lab-19-logs.PNG)
