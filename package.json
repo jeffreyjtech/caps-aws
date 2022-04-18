@@ -1,0 +1,26 @@
+{
+  "name": "caps-aws",
+  "version": "1.0.0",
+  "description": "An AWS-powered parcel delivery service that allows for vendors, such as flower shops or restaurants, to alert a system of a package needing to be delivered, for drivers to instantly see what’s in their pickup queue, and then to alert the vendors as to the state of the deliveries.",
+  "main": "driver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffreyjtech/caps-aws.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeffreyjtech/caps-aws/issues"
+  },
+  "homepage": "https://github.com/jeffreyjtech/caps-aws#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1115.0",
+    "chance": "^1.1.8",
+    "sqs-consumer": "^5.6.0",
+    "sqs-producer": "^2.1.0"
+  }
+}
