@@ -26,7 +26,7 @@ const payload = {
 function publishPickup() {
   sns.publish(payload).promise()
     .then((response) => {
-      console.log('Payload sent to SNS:\n ', response);
+      console.log('Payload sent to SNS');
     })
     .catch(console.error);
 }

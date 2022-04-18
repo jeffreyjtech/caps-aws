@@ -33,9 +33,9 @@ async function confirmPickup(message) {
         body: stringifiedMessage,
       };
     
-      let response = await producer.send(payload);
-    
-      console.log('Payload sent to SQS:\n ', response);
+      await producer.send(payload);
+
+      console.log('Payload sent to SQS');
     } catch (error) {
       console.error(error);
     }
